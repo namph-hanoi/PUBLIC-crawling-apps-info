@@ -10,7 +10,9 @@ driver = webdriver.Remote(
     options=google_options
 )
 
-developer = 'ghi-nguyen'
+# developer = 'ghi-nguyen'
+# developer = 'google-llc'
+developer = 'meta-platforms-inc'
 driver.get(f"https://www.google.com/search?q={developer}+site%3Ahttps%3A%2F%2Fapps.apple.com%2Fmy%2Fdeveloper%2F{developer}")
 driver.maximize_window()
 
@@ -26,19 +28,55 @@ for link in links:
         # print(hrefValue)
         first_apple_links = hrefValue
         break
-    
+
 if first_apple_links is not None:
     driver.get(first_apple_links)
+    set_of_targeted_urls = set()
+    set_of_see_all_urls = set()
 
-    links = driver.find_elements(By.CSS_SELECTOR, "a[href]")
+    all_anchors = driver.find_elements(By.CSS_SELECTOR, "a[href]")
 
 
-    for link in links:
-        hrefValue = link.get_attribute('href')
+    for anchor in all_anchors:
+        hrefValue = anchor.get_attribute('href')
 
-        pattern = r'^https://apps.apple.com/\w+/app/'
-        if re.match(pattern, hrefValue):
-            print(hrefValue)
+    # collect all item urls within first_apple_links
+        pattern_app_item = r'^https://apps.apple.com/\w+/app/'
+        if re.match(pattern_app_item, hrefValue):
+            set_of_targeted_urls.add(hrefValue)
+            # print(hrefValue)
+
+    # collect all 'see all' links
+    see_more_anchors = driver.find_elements(By.CSS_SELECTOR, "a.section__nav__see-all-link")
+
+    for anchor in see_more_anchors:
+        hrefValue = anchor.get_attribute('href')
+        set_of_see_all_urls.add(hrefValue)
+
+
+    # jump into each 'see all', append further items into the set_of_targeted_urls
+    for url in set_of_see_all_urls:
+        driver.get(url)
+        all_anchors = driver.find_elements(By.CSS_SELECTOR, "a[href]")
+        # todo: make it common
+        pattern_app_item = r'^https://apps.apple.com/\w+/app/'
+        for anchor in all_anchors:
+            hrefValue = anchor.get_attribute('href')
+            if re.match(pattern_app_item, hrefValue):
+                set_of_targeted_urls.add(hrefValue)
+
+
+    print(set_of_targeted_urls)
+
+
+
+    # start crawling in each url
+
+
+
+
+
+
 
 
 driver.quit()
