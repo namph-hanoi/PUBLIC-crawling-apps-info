@@ -69,8 +69,28 @@ if first_apple_links is not None:
     print(set_of_targeted_urls)
 
 
-
+    response = []
     # start crawling in each url
+    for app_url in set_of_targeted_urls:
+        driver.get(app_url)
+        app = {}
+        app['app_url'] = app_url
+
+        title = driver.find_element(By.CSS_SELECTOR, '.app-header__title')
+        app['name'] = title.text
+
+        id_regex_match = re.search(r'id(\d+)', app_url)
+        if id_regex_match:
+            app['app_id'] = id_regex_match.group(1)
+        
+        devices_in_tags = driver.find_elements(By.CSS_SELECTOR, '.information-list__item__definition__item__term')
+
+        app['app_targets'] = [tag.text for tag in devices_in_tags]
+
+        response.append(app)
+        
+
+    print(response)
 
 
 
