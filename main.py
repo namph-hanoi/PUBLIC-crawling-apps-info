@@ -28,7 +28,7 @@ if first_apple_link is not None:
     set_of_targeted_urls = set()
 
     all_anchors = driver.find_elements(By.CSS_SELECTOR, "a[href]")
-    ScrawlingService.get_app_urls_first_page(set_of_targeted_urls, all_anchors)
+    ScrawlingService.get_app_urls_in_page(set_of_targeted_urls, all_anchors)
     print(set_of_targeted_urls)
     
 
@@ -44,7 +44,7 @@ if first_apple_link is not None:
     for url in set_of_see_all_urls:
         driver.get(url)
         all_anchors = driver.find_elements(By.CSS_SELECTOR, "a[href]")
-        ScrawlingService.get_app_urls_second_page(set_of_targeted_urls, all_anchors)
+        ScrawlingService.get_app_urls_in_page(set_of_targeted_urls, all_anchors)
         print(set_of_targeted_urls)
 
 
