@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, abort
-from ..service import ScrawlingService
+from ..service import CrawlingService
 
 def create_app():
     app = Flask(__name__)
@@ -9,8 +9,9 @@ def create_app():
         company_name = request.form.get('company_name')
         if company_name is None:
             abort(400, 'A company_name is required')
-        apps_info = ScrawlingService.get_apps_info(company_name)
+        #  Todo: inject CrawlingService instead of initiate manually
+        crawling_service = CrawlingService()
+        apps_info = crawling_service.get_apps_info(company_name)
         return jsonify(apps_info)
-
 
     return app

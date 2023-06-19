@@ -1,3 +1,3 @@
-from .crawling_service import ScrawlingService
+from .crawling_service import CrawlingService
 
-__all__ = ['ScrawlingService']
+__all__ = ['CrawlingService']
