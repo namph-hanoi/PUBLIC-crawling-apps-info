@@ -1,5 +1,5 @@
 import unittest
-from service import ScrawlingService
+from app.service import ScrawlingService
 from unittest.mock import MagicMock
 
 class TestCrawlingService(unittest.TestCase):
