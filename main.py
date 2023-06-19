@@ -1,6 +1,7 @@
 import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from service import ScrawlingService
 
 
 google_options = webdriver.ChromeOptions()
@@ -18,33 +19,18 @@ driver.maximize_window()
 
 links = driver.find_elements(By.CSS_SELECTOR, "a[href]")
 
-first_apple_links: str
+first_apple_link = ScrawlingService.get_destination_page(links)
 
-for link in links:
-    hrefValue = link.get_attribute('href')
 
-    pattern = r'^https://apps.apple.com/my/developer'
-    if re.match(pattern, hrefValue):
-        # print(hrefValue)
-        first_apple_links = hrefValue
-        break
-
-if first_apple_links is not None:
-    driver.get(first_apple_links)
-    set_of_targeted_urls = set()
+if first_apple_link is not None:
+    driver.get(first_apple_link)
     set_of_see_all_urls = set()
+    set_of_targeted_urls = set()
 
     all_anchors = driver.find_elements(By.CSS_SELECTOR, "a[href]")
-
-
-    for anchor in all_anchors:
-        hrefValue = anchor.get_attribute('href')
-
-    # collect all item urls within first_apple_links
-        pattern_app_item = r'^https://apps.apple.com/\w+/app/'
-        if re.match(pattern_app_item, hrefValue):
-            set_of_targeted_urls.add(hrefValue)
-            # print(hrefValue)
+    ScrawlingService.get_app_urls_first_page(set_of_targeted_urls, all_anchors)
+    print(set_of_targeted_urls)
+    
 
     # collect all 'see all' links
     see_more_anchors = driver.find_elements(By.CSS_SELECTOR, "a.section__nav__see-all-link")
@@ -58,12 +44,8 @@ if first_apple_links is not None:
     for url in set_of_see_all_urls:
         driver.get(url)
         all_anchors = driver.find_elements(By.CSS_SELECTOR, "a[href]")
-        # todo: make it common
-        pattern_app_item = r'^https://apps.apple.com/\w+/app/'
-        for anchor in all_anchors:
-            hrefValue = anchor.get_attribute('href')
-            if re.match(pattern_app_item, hrefValue):
-                set_of_targeted_urls.add(hrefValue)
+        ScrawlingService.get_app_urls_second_page(set_of_targeted_urls, all_anchors)
+        print(set_of_targeted_urls)
 
 
     print(set_of_targeted_urls)
@@ -92,10 +74,8 @@ if first_apple_links is not None:
 
     print(response)
 
-
-
-
-
+else:
+    print('Todo: throw httpError 400: searched developer not found')
 
 
 
