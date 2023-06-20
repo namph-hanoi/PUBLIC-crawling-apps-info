@@ -9,4 +9,5 @@ RUN cd /app \
 && pip install -r requirements.txt --no-cache-dir
 
 COPY . /app
-CMD gunicorn -b 0.0.0.0:${GUNICORN_APP_PORT} app:app
+# Extend the timeout to 30 minutes (1800)
+CMD gunicorn -b 0.0.0.0:${GUNICORN_APP_PORT} app:app --timeout 1800
