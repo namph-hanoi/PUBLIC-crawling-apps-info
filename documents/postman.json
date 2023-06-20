@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "a8338a98-f005-4e3d-a7a8-9aee58699a1c",
+		"name": "Simple crawling app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7946691"
+	},
+	"item": [
+		{
+			"name": "Crawling API",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "company_name",
+							"value": "meta-platforms-inc",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "company_name",
+							"value": "google-llc",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "company_name",
+							"value": "meta-platforms-inc",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "company_name",
+							"value": "grab-com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "company_name",
+							"value": "ghi-nguyen",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host_and_port}}",
+					"host": [
+						"{{host_and_port}}"
+					],
+					"query": [
+						{
+							"key": "search_key",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host_and_port",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
