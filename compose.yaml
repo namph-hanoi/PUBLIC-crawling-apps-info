@@ -1,0 +1,33 @@
+networks:
+  simple_crawler:
+    driver: bridge
+    
+services:
+  chrome:
+    container_name: crawler_chrome
+    image: selenium/standalone-chrome
+    shm_size: 2g
+    networks:
+      - simple_crawler
+
+  backend:
+    container_name: crawler_backend
+    build:
+      context: .
+      target: development
+      args:
+        APP_PORT: ${APP_PORT}
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - .:/app/
+    working_dir: /app
+    depends_on:
+      - chrome
+    links:
+      - chrome
+    networks:
+      - simple_crawler
