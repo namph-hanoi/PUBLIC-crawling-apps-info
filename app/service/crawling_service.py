@@ -18,7 +18,6 @@ class CrawlingService:
 
           pattern = r'^https://apps.apple.com/my/developer'
           if re.match(pattern, hrefValue):
-              # print(hrefValue)
               first_apple_link = hrefValue
               break
       return first_apple_link
@@ -41,10 +40,9 @@ class CrawlingService:
         google_options = webdriver.ChromeOptions()
         google_options.add_experimental_option("detach", True)
         driver = webdriver.Remote(
-            command_executor='http://debian.vg:4444',
+            command_executor=f'http://{Config.CHROME_HOST}:{Config.CHROME_PORT}',
             options=google_options
         )
-
         driver.get(f"https://www.google.com/search?q={developer}+site%3Ahttps%3A%2F%2Fapps.apple.com%2Fmy%2Fdeveloper%2F{developer}")
         driver.maximize_window()
 

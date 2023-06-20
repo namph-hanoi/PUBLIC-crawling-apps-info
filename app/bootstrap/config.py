@@ -13,3 +13,5 @@ class Config:
     DEBUG = bool(os.getenv('FLASK_DEBUG', False))
     APP_HOST = os.getenv('APP_HOST', '127.0.0.1')
     APP_PORT = os.getenv('APP_PORT', '5002')
+    CHROME_HOST = os.getenv('CHROME_HOST', 'localhost')
+    CHROME_PORT = os.getenv('CHROME_PORT', '4444')

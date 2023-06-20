@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, abort
 from ..service import CrawlingService
+from .config import Config
 
 def create_app():
     app = Flask(__name__)
