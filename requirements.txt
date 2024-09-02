@@ -1,5 +1,10 @@
 flask==2.3.2
+chromedriver-binary==102.0.5005.27.0
 python-dotenv
 gunicorn
 selenium
+selenium-wire
 pytest
+unicodecsv
+pyotp
+webdriver-manager==3.7.0

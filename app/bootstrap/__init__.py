@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify, abort
+
+from app.service.crawling_linkedin import config_to_login
 from ..service import CrawlingService
 from .config import Config
 
@@ -14,5 +16,11 @@ def create_app():
         crawling_service = CrawlingService()
         apps_info = crawling_service.get_apps_info(company_name)
         return jsonify(apps_info)
+    
+    @app.route('/sales', methods=['GET'])
+    def crawling_linkedin():
+        #  Todo: inject CrawlingService instead of initiate manually
+        config_to_login()
+        return 'OK'
 
     return app

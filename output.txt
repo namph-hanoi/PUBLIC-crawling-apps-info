@@ -1,0 +1,26 @@
+Serial,Page_Link,Company_Li_URL,Li_Id,Co_Name,Co_Indusrty,Co_Emp_Count,total_count
+1,1,https://www.linkedin.com/company/3727,3727,ArcelorMittal,-,-,318
+2,1,https://www.linkedin.com/company/1070,1070,Nokia,-,-,318
+3,1,https://www.linkedin.com/company/2327,2327,Randstad,-,-,318
+4,1,https://www.linkedin.com/company/3131,3131,The HEINEKEN Company,-,-,318
+5,1,https://www.linkedin.com/company/1204,1204,The Janssen Pharmaceutical Companies of Johnson & Johnson,-,-,318
+6,1,https://www.linkedin.com/company/1970,1970,Rabobank,-,-,318
+7,1,https://www.linkedin.com/company/479080,479080,A.P. Moller - Maersk,-,-,318
+8,1,https://www.linkedin.com/company/2087,2087,Volvo Group,-,-,318
+9,1,https://www.linkedin.com/company/7177,7177,Louis Dreyfus Company,-,-,318
+10,1,https://www.linkedin.com/company/2594164,2594164,ING,-,-,318
+11,1,https://www.linkedin.com/company/1060,1060,Ericsson,-,-,318
+12,1,https://www.linkedin.com/company/162261,162261,Achmea,-,-,318
+13,1,https://www.linkedin.com/company/1090,1090,Philips,-,-,318
+14,1,https://www.linkedin.com/company/5328,5328,H&M,-,-,318
+15,1,https://www.linkedin.com/company/2743,2743,IKEA,-,-,318
+16,1,https://www.linkedin.com/company/2227,2227,Novo Nordisk,-,-,318
+17,1,https://www.linkedin.com/company/3132,3132,Statoil,-,-,318
+18,1,https://www.linkedin.com/company/4103,4103,Aker Solutions,-,-,318
+19,1,https://www.linkedin.com/company/2441,2441,KLM Royal Dutch Airlines,-,-,318
+20,1,https://www.linkedin.com/company/1809,1809,European Commission,-,-,318
+21,1,https://www.linkedin.com/company/1173,1173,ABN AMRO Bank N.V.,-,-,318
+22,1,https://www.linkedin.com/company/3724,3724,the LEGO Group,-,-,318
+23,1,https://www.linkedin.com/company/5472,5472,Ferrero,-,-,318
+24,1,https://www.linkedin.com/company/11348,11348,Booking.com,-,-,318
+25,1,https://www.linkedin.com/company/3222,3222,AkzoNobel,-,-,318

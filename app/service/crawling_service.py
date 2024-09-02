@@ -6,6 +6,9 @@ from flask import abort
 from selenium.webdriver.remote.webdriver import WebDriver
 from app.bootstrap.config import Config
 
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 class CrawlingService:
     base_app_url_regex = r'^https://apps.apple.com/\w+/app/'
 
@@ -39,9 +42,13 @@ class CrawlingService:
     def get_apps_info(self, developer: str):
         google_options = webdriver.ChromeOptions()
         google_options.add_experimental_option("detach", True)
-        driver = webdriver.Remote(
-            command_executor=f'http://{Config.CHROME_HOST}:{Config.CHROME_PORT}',
-            options=google_options
+        # driver = webdriver.Remote(
+        #     command_executor=f'http://{Config.CHROME_HOST}:{Config.CHROME_PORT}',
+        #     options=google_options
+        # )
+        driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()),
+            options=google_options,
         )
         driver.get(f"https://www.google.com/search?q={developer}+site%3Ahttps%3A%2F%2Fapps.apple.com%2Fmy%2Fdeveloper%2F{developer}")
         driver.maximize_window()
